@@ -1,0 +1,179 @@
+
+body .body {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+body .body .Team {
+    margin: 5px;
+    background-color: white;
+    color: #1C1C1C;
+    width: 230px;
+    height: 250px;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* border */
+    border-color: black;
+    border-width: 1px;
+    border-radius: 7px;
+    border-style: solid;
+}
+body .body .Set{
+    margin: 5px;
+    background-color: white;
+    color: #1C1C1C;
+    width: 35px;
+    height: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0px;
+    padding-bottom: 25px;
+    /* border */
+    border-color: black;
+    border-width: 1px;
+    border-radius: 7px;
+    border-style: solid;
+}
+body .body .currentSet {
+    margin-top: 5px;
+    text-align: center;
+    justify-content: center;
+    background-color: white;
+    color: #1C1C1C;
+    width: 35px;
+    height: 108px;
+    padding-left: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 30px;
+    /* border */
+    border-color: black;
+    border-width: 1px;
+    border-radius: 7px;
+    border-style: solid;
+
+}
+h1 {
+    position: relative;
+        top: -40%;
+    margin-bottom: 40px;
+    font-size:100px;
+}
+body .body h1 {
+    font-size:150px;
+}
+h2 {
+    font-size:40px;
+    margin-bottom: 0px;
+    padding-bottom: 0 px;
+}
+input[type=text] {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    width: 220px;
+    font-size: 28px;
+}
+#currentSet {
+    margin-left: 10px;
+}
+h3 {
+    font-size: 35px;
+    margin-top: 10px;
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+h4 {
+    font-size:65px;
+    margin: 0px;
+    margin-top: 15px;
+    padding: 0px;
+}
+body .body .currentSet h2{
+    position: relative;
+        top: -25%;
+}
+.buttons {
+    font-size:25px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.buttons button {
+    text-align: center;
+    margin: 10px;
+    font-size: 30px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #1E90FF;
+    background-color: #1E90FF;
+    width: 100px;
+    height: 40px;
+}
+body .buttons button:hover {
+    border: 1px solid #00BFFF;
+    background-color: #00BFFF;
+}
+.buttons .teamAButtons{
+    margin-right: 110px;
+}
+.buttons .teamBButtons{
+    margin-left: 110px;
+}
+.buttons input[type=number] {
+    margin-left: 30%;
+    font-size: 25px;
+    width: 50px;
+}
+.buttons select {
+    width: 50px;
+    margin-left: 30%;
+    font-size: 25px;
+}
+.settingsButtons {
+    font-size: 20px;
+    margin-top: -170px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.settingsButtons button {
+    margin-top: 20px;
+    margin-left: 40px;
+    font-size: 18px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #1E90FF;
+    background-color: #1E90FF;
+    width: 100px;
+    height: 40px;
+}
+body .settingsButtons button:hover {
+    border: 1px solid #00BFFF;
+    background-color: #00BFFF;
+}
+#setsDiv {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 150px;
+    /* border: 1px solid #1C1C1C; */
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+}
+#setsDiv .setRender {
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 190px;
+    border-radius: 10px;
+    height: 30px;
+    border: 1px solid #1C1C1C;
+}

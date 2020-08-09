@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/notify.css">
+</head>
+<body>
+    <!-- Sign in Page -->
+    <div class="app">
+        <h2>Scoreboard</h2>
+        <input type="text" id="user" placeholder="Username">
+        <input type="password" id="password" placeholder="password">
+        <button id="signIn" onclick="signIn()">Sign In</button>
+        <span>Don't have an account? <a href="#" onclick="signUpPage()">Sign Up</a></span>
+    </div>
+    <!-- Sign Up Page -->
+    <div id="signup" style="display: none">
+        <div class="app" style="height: 350px;"><h1>Sign Up</h1>
+        <input type="text" id="name" placeholder="name">
+        <input type="text" id="userName" placeholder="Username">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password-signup" placeholder="Password">
+        <div style="flex-direction:column">
+           <button id="signUpButton"onclick="signUp()">Sign Up</button> 
+           <button id="cancel" onclick="cancel()">Cancel</button>
+        </div>
+        
+        </div>
+    </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./script/notify.js"></script>
+    <script src="./script/index.js"></script>
+</body>
+</html>

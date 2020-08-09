@@ -1,0 +1,118 @@
+/* Alert */
+body .alert {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color:#DC143C;
+    color:	white;
+    
+    width: 400px;
+    height: 70px;
+    border-radius: 20px;
+    position: absolute;
+        left:68%;
+        top: 0%;
+    opacity: 0;
+    margin-top: 3%;
+    transition: opacity 0.5s ease, margin 0.4s ease;
+}
+body .alert:hover {
+    opacity: 1;
+}
+body .alert.hide {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+body .alert .subalert {
+    position: relative;
+        top: -30%;
+    width: 400px;
+    padding-bottom: 4px;
+}
+
+body .alert span {
+    text-shadow: 0.1em 0.1em 0.2em rgb(0, 0, 0);
+    font-size: 26px;
+    margin-bottom: 7px;
+    margin-top: 3px;
+    padding-bottom: 0px;
+}
+body .alert progress{
+    display: inline-block;
+    margin: 1px 0;
+    width: 395px;
+    height: 25px;
+    position: relative;
+        top: 52%;
+
+    background: #DC143C;
+    border: 0.5px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    border-width: 10px;
+}
+body .alert progress::-webkit-progress-value { background: #DC143C; }
+body .alert progress::-webkit-progress-bar { 
+    background: #ffffff;
+    color: rgb(245, 10, 10);
+}
+/* Success */
+body .success {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color:#00BFFF;
+    color:	white;
+    
+    width: 400px;
+    height: 70px;
+    border-radius: 20px;
+    position: absolute;
+        left:68%;
+        top: 0%;
+    opacity: 0;
+    margin-top: 3%;
+    transition: opacity 0.5s ease, margin 0.4s ease;
+}
+body .success:hover {
+    opacity: 1;
+}
+body .success.hide {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+body .success .subsuccess {
+    position: relative;
+        top: -30%;
+    width: 400px;
+    padding-bottom: 4px;
+}
+
+body .success span {
+    text-shadow: 0.1em 0.1em 0.2em rgb(0, 0, 0);
+    font-size: 26px;
+    margin-bottom: 7px;
+    margin-top: 3px;
+    padding-bottom: 0px;
+}
+body .success progress{
+    display: inline-block;
+    margin: 1px 0;
+    width: 395px;
+    height: 25px;
+    position: relative;
+        top: 52%;
+
+    background: #00BFFF;
+    border: 0.5px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    border-width: 10px;
+}
+body .success progress::-webkit-progress-value { background: #00BFFF; }
+body .success progress::-webkit-progress-bar { 
+    background: #ffffff;
+    color: #00BFFF;
+}

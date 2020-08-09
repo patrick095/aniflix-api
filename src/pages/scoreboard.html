@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="./css/scoreboard.css">
+    <!--socket.io-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>Scoreboard</h1>
+        </div>
+        <div class="body">
+            <div class="Team">
+                <h2 id="homeName">Team A</h2> 
+                <h1 id="homeScore">0</h1>
+            </div>
+            <div class="Set">
+                <h4 id="homeSet">0</h4>
+            </div>
+            <div class="currentSet">
+                <h3>Set</h3>
+                <h2 id="currentSet">1</h2>
+            </div>
+            <div class="Set">
+                <h4 id="visitorSet">0</h4>
+            </div>
+            <div class="Team">
+                <h2 id="visitorName">Team B</h2>
+                <h1 id="visitorScore">0</h1>
+                
+            </div>
+        </div>
+    </div>
+    <script src="../../script/scoreboard.js"></script>
+</body>
+</html>

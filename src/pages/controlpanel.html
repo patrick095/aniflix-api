@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard - Control Panel</title>
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/controlpanel.css">
+    <link rel="stylesheet" href="../../css/notify.css">
+    <!--socket.io-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="links" onclick="closeMenu()">
+            <a href="#" id="homeLink">Home</a>
+            <a href="#" id="controlPanelLink">Control Panel</a>
+            <a href="#" id="scoreboardLink">Scoreboard</a>
+        </div>
+        <div class="userInfo" >
+            <span id="userName" onclick="closeMenu()">User</span>
+            <img onclick="openMenu()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAKlBMVEXc3Nz////t7e37+/ve3t7l5eXh4eH4+Pjm5uby8vL19fXv7+/p6ena2tpwjZMDAAAEq0lEQVR4nO2d0XajMAxEARswhv7/765JmjYNIYnlAUas7p597xzJ8kg2TlUZhmEYhmEYhmEYhmEYhmEYhmEYhmEYhgp8+nda/EzopqP/jm1JITxxDL85v0LDMAzDMAzjHd38f2qGIcZhbKa27c7lErshhFhfcMOYFIak8EwSx7p39SOuH5pwjkh2/ULdnc7YtNpVdi/0fRMnzSL9e4Ezg958HT5TeNGoU+SnAhOjPok+NB+HcMa1ujS2MUfdlUmRxE6gr9aUqY1InyKJo1SgFoldkCvUsRY/8DEv0GDjZFXmRs/vb9oigWkp0kssC2HNn6cfmu0XsPvw0iRNBG6F07KhzyVyB/FlU3+KIJavQ/aVCFiHcyN1tIwXiF33PQ1zELO63jWoaw2g0KQ0Za41CIHcaYpRSFxNEZtFouetpiCFxAsRpLCeaNMUpZC31KAUEvfBIIXExRSlkLeYlreH7Aohro1aIcR5UyuEdE+plvIqLBnp61BYNtP/gXfHrzymmPK6tsoXz7xnHLHCktPDX3re3gIzbKsjb6EBLUTiUloBDp9q6lJaQfZ8R31vsQUo7GPDe54P6i3qyCoRZEtr3gMoyH5/gbXYgNrD/0EhrW+DKRxOvw5p77hDfHfNvOdDfHcisiYpbF5KbL1BWz7rXpF6J9CchnWvSHjIwJS30FSgcSL1FAOSpsQj75SmCFtDu99fAGz6tKb0CmDTj6E7WsUrAMM24v3+QnGakicpoJoO3ElalZ+STuRJWrwSR/oQVr7ta6FIF93A7Nhu+C4IMzVqeXHBe6E9HdW8t+CF17/4i8wvIntK3TU9Imr2icczS0T7Prtd+4Oki6K3a38RpKmqJBWlKXfjuyS7x1CWpIIg0p7GrJE7WFQXwuwgqgthlXvWpsmx3chK016TY7uRVU2Jv3VaJ0sh9W29NbIUUk/y1zi/wqxKc36FKtdhVgOlspbmjRR5z+7XyRJI/hn+E77a7C7fBSWjxAuyDy8USZSek6p4zmxGfnFISQtVcDOK++mWb74muUAVL7ZVRQIVRNGXXzdhtqhfvoF8cdE3HefP+3SoO8KzSMJnsAPuW4QrXNkKSs8HXMNyJtyCvsN/AsEYNVUXdHr+JQXyUIGSh62zOW4A0I1brL5nuCMaZD9tm52P7Fxa/bRHdj7Q77cipXeeyhna7X/M0IcDondHv22XfEhyLtjuoazjkvORbX68BfBGMBA3oqvOJr6zjBg8bkkW9u1b4VBVB/HC80ZgBuW4dwQ2AHGiw7A/vMCVRhH08tOGFM4f+QWWGgDyFL1ScqBDXWR+KMhT0IfLmyO/9KciR+uCIGoJoTyINK3EW6TW5ui/OwPZVBX0VOcuyPZEPUkqtacK7MwvkjTVU0lnJBNj1HM6+yCppjoc2w3J8b+mQpMQfCDNO7p4Sv5C1NAZ3pO/I+oqpZKjKV2lVHKKqsmzzeQrJB0Cr5KvUNd2KHGm51cIvMG1C6ZwiTLTZgqfoGWSeMMUmkJ+8hUqaw8Fru30CiHPdO6JKTSF/GRPMUwhHaZwiSlk4/wK8x/sM4VsZJ9bqKul+Scz51c4OF28+WKoXRKmRhfhiYgf/gHZ+1ogqTKAlQAAAABJRU5ErkJggg==">
+        </div>
+    </div>
+    <div class="body">
+        <div class="Team">
+            <input type="text" id="homeName" placeholder="Team A" oninput="changePointsOrSetsValues(false)">
+            <h1 id="homeScore">0</h1>
+        </div>
+        <div class="Set">
+            <h4 id="homeSet">0</h4>
+        </div>
+        <div class="currentSet">
+            <h3>Set</h3>
+            <h2 id="currentSet">1</h2>
+        </div>
+        <div class="Set">
+            <h4 id="visitorSet">0</h4>
+        </div>
+        <div class="Team">
+            <input type="text" id="visitorName" placeholder="Team B" oninput="changePointsOrSetsValues(false)">
+            <h1 id="visitorScore">0</h1>
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <div class="teamAButtons">
+            <button onclick="buttonClicked('TeamAAdd')" id="TeamAAdd"> + </button>
+            <button onclick="buttonClicked('TeamARemove')" id="TeamARemove"> - </button>
+        </div>
+        <div class="settingsButtons" id="settingsButtons">
+            <label for="Points">number of points</label>
+            <input type="number" id="Points" value="25" onchange="changePointsOrSetsValues(true)">
+            <label for="taiBreak">tai-break points</label>
+            <input type="number" id="taiBreak" value="15" onchange="changePointsOrSetsValues(true)">
+            <label for="Sets">Sets Number</label>
+            <select id="Sets" onchange="changePointsOrSetsValues(true)">
+                <option value="1">1</option>
+                <option value="3" selected>3</option>
+                <option value="5">5</option>
+            </select>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <div class="teamBButtons">
+            <button onclick="buttonClicked('TeamBAdd')" id="TeamBAdd"> + </button>
+            <button onclick="buttonClicked('TeamBRemove')" id="TeamBRemove"> - </button>
+        </div>
+    </div>
+    <script src="../../script/usermenu.js"></script>
+    <link rel="stylesheet" href="../../css/usermenu.css">
+    <script src="../../script/notify.js"></script>
+    <script src="../../script/controlpanel.js"></script>
+</body>
+</html>
