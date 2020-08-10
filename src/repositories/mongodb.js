@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://127.0.0.1:27017/aniflix',{
+//process.env.MONGODB_URL
+mongoose.connect( process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/aniflix',{
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
     useFindAndModify: false
