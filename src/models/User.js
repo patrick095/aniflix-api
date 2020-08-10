@@ -24,6 +24,16 @@ const schema = new mongoose.Schema({
     money: {
         type: Number,
         default: 0
+    },
+    token: {
+        type: String
+    },
+    refreshToken: {
+        type: String,
+    },
+    remainingTokens: {
+        type: Number,
+        default: 5
     }
 });
 

@@ -10,10 +10,11 @@ const authConfig = require('../config/auth.json');
 const salt = bcrypt.genSaltSync(13);
 
 module.exports = {
- //normal case 
+
+
 async signin (req,res){
     function gerarToken(params = {}){
-        return jwt.sign(params, authConfig.secret, { expiresIn: 85999 });
+        return jwt.sign(params, authConfig.secret, { expiresIn: 3 * 24 * 3600 }); //3 dias
     }
     const user = await Users.findOne({user:req.body.user}).select('+password')
     //verifica se o usuário existe
@@ -22,14 +23,26 @@ async signin (req,res){
     }
     //verifica se a senha é valida
     if (!await bcrypt.compare(req.body.password, user.password)){
-        return res.json('invalid password')
+        return res.json('invalid password');
     }
-    user.password = undefined
-    res.send({
-            user, 
-            token: gerarToken({ id: user.id }),
-    })
+    const newToken = await gerarToken({ id: user.id });
+    const userWithToken = await Users.findByIdAndUpdate({_id: user._id},{token: newToken, refreshToken: ''},{new: true});
+    userWithToken.password = undefined;
+    res.send({userWithToken})
 },
+
+
+async renewtoken(req, res){
+    function gerarToken(params = {}){
+        return jwt.sign(params, authConfig.secret, { expiresIn: 3 * 24 * 3600 }); //3 dias
+    }
+    const filter = req.headers.authorization
+    const newToken = await gerarToken({ id: req.headers.userid });
+    const userWithNewToken = await Users.findOneAndUpdate(filter,{token: newToken}, {new: true});
+    
+    return res.json({token: userWithNewToken.token});
+},
+
 
 async signup (req,res){
     function gerarToken(params = {}){
@@ -70,37 +83,32 @@ async signup (req,res){
     }
 },
 
+
 async updateUser(req,res){
-    function gerarToken(params = {}){
-        return jwt.sign(params, authConfig.secret, { expiresIn: 85999 });
-    }
+    //loga na conta para poder editar outro usuário
     const user = await Users.findOne({user:req.body.user}).select('+password')
-    //verifica se o usuário existe
-    if (user == null){
-        return res.json('invalid username')
-    }
     //verifica se a senha é valida
     if (!await bcrypt.compare(req.body.password, user.password)){
         return res.json('invalid password')
     }
-    if (user.level === 1){
-        if (req.body.update.level > 0) {
-            return res.json('you not have permission to change level')
-        }
+
+    //verifica se tem nivel para editar o dinheiro do usuário
+    if (user.level < 0){
         const filter = {user: req.body.update.user, email: req.body.update.email};
-        const id = await Users.findOne(filter)
+        const user = await Users.findOne(filter)
         const update = {
             money: req.body.update.money
         }
-        if (id) {
-            var editedUser = await Users.findByIdAndUpdate(id._id, update, {new:true})
+        if (user) {
+            var editedUser = await Users.findByIdAndUpdate(user._id, update, {new:true})
             return res.json(editedUser)  
         }
         else {
             return res.json('user not found')
         }
-        
     }
+
+    //verifica se tem nível para editar o nível de outros usuários
     if (user.level === 2){
         const filter = {user: req.body.update.user, email: req.body.update.email};
         const id = await Users.findOne(filter)
@@ -110,7 +118,8 @@ async updateUser(req,res){
         }
         if (id) {
             var editedUser = await Users.findByIdAndUpdate(id._id, update, {new:true})
-            return res.json(editedUser)  
+            editedUser.password = undefined;
+            return res.json(editedUser);
         }
         else {
             return res.json('user not found')
@@ -119,7 +128,6 @@ async updateUser(req,res){
     else {
         return res.json("you don't have permission to update");
     }
-    
 },
 
 };

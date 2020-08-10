@@ -10,6 +10,6 @@ app.use(cors());
 requireDir('./models/')
 
 app.use('/', require('./routes.js'));
-app.use('/animes/', require('./routesAuth.js'));
+app.use('/auth/', require('./routesAuth.js'));
 
 app.listen(3000);

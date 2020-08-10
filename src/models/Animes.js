@@ -44,6 +44,19 @@ const AnimesSchema = new mongoose.Schema({
     LaunchDay: {
         type: String,
         default: 'Desconhecido'
+    },
+    resume: {
+        type: String,
+    },
+    category: {
+        type: Number,
+        default: 0
+    },
+    capeURL: {
+        type: String,
+    },
+    trailerURL: {
+        type: String,
     }
 })
 
