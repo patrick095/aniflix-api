@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 //process.env.MONGODB_URL
 // const Url = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/aniflix'
-mongoose.connect( 'mongodb+srv://admin:VSK33cm@2hkgAZL@cluster0.jiyct.mongodb.net/aniflix?retryWrites=true&w=majority',{
+mongoose.connect( 'process.env.MONGODB_URL',{
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
     useFindAndModify: false
